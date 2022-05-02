@@ -18,8 +18,8 @@ public class Controller {
      * Class constructor
      * @param register a register containing an amount of cash
      */
-    public Controller(Register register){
-        this.register = register;
+    public Controller(){
+    	register = new Register();
         dbHandler = new DbHandler();
         printer = new Printer();
     }
@@ -40,9 +40,11 @@ public class Controller {
      */
     public String addItem(int itemID, int quantity){
         ItemDTO item = dbHandler.getItemInfo(itemID);
+        if(item == null)
+        	return null;
         sale.addItem(item, quantity);
         return "Total: "+sale.getTotal()+
-                "Item"+item.getName()+"\n"+
+                " Item: "+item.getName()+"\n"+
                 item.getDescription();
     }
     
@@ -53,9 +55,11 @@ public class Controller {
     */
     public String addItem(int itemID){
         ItemDTO item = dbHandler.getItemInfo(itemID);
+        if(item == null)
+        	return null;
         sale.addItem(item, 1);
         return "Total: "+sale.getTotal()+
-                "Item"+item.getName()+"\n"+
+                " Item: "+item.getName()+"\n"+
                 item.getDescription();
     }
 

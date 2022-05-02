@@ -24,12 +24,12 @@ public class Sale {
      * @param quantity Item quantity
      */
     public void addItem(ItemDTO itemDTO, int quantity){
-    	Item newItem = new Item(itemDTO, quantity);
-    	if(!listOfItems.contains(newItem)) {
-    		listOfItems.add(newItem);
+    	Item item = new Item(itemDTO, quantity);
+    	if(!listOfItems.contains(item)) {
+    		listOfItems.add(item);
     	}
     	else {
-    		listOfItems.get(listOfItems.indexOf(newItem)).updateQuantity(quantity);
+    		listOfItems.get(listOfItems.indexOf(item)).updateQuantity(quantity);
     	}
         updateTotal(itemDTO.getPrice() * quantity) ;
     }
