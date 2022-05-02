@@ -30,10 +30,10 @@ public class ExternalInventorySystem {
      * @param saleDTO SaleDTO describing a sale
      */
     public void logSale(SaleDTO saleDTO) {
-    	ArrayList<Item> list = saleDTO.getItemsInSale();
-    	for(int i = 0; i < list.size(); i++) {
-    		if(items.containsKey(list.get(i).getItem().getID())) {
-    			items.get(list.get(i).getItem().getID()).quantity--;
+    	for(int i = 0; i < saleDTO.getItemsInSale().size(); i++) {
+    		if(items.containsKey(saleDTO.getItem(i).getItemDTO().getID())) {
+    			items.get(saleDTO.getItem(i).getItemDTO().getID()).quantity 
+    			-= saleDTO.getItem(i).getQuantity();
     		}
     	}
     }

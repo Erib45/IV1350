@@ -21,9 +21,9 @@ public class Printer {
     	System.out.println("#5 Time of sale: " + receipt.getTimeOfSale());
     	System.out.println("#6 Items in sale:");
     	for(int i = 0; i < receipt.getItemsInSale().size(); i++) {
-    		System.out.println("#" + (i + 7) + " " + receipt.getItemsInSale().get(i).getItem().getName()
-    			+	"   "+receipt.getItemsInSale().get(i).getItem().getPrice()+"   *" + receipt.getItemsInSale().get(i).getQuantity() 
-    			+ "(" + receipt.getItemsInSale().get(i).getQuantity()*receipt.getItemsInSale().get(i).getItem().getPrice() +")");
+    		System.out.println("#" + (i + 7) + " " + receipt.getItemsInSale().get(i).getItemDTO().getName()
+    			+	"   "+receipt.getItemsInSale().get(i).getItemDTO().getPrice()+"   *" + receipt.getItemsInSale().get(i).getQuantity() 
+    			+ "(" + receipt.getItemsInSale().get(i).getQuantity()*receipt.getItemsInSale().get(i).getItemDTO().getPrice() +")");
     	}
     }
 }

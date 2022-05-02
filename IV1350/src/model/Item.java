@@ -15,7 +15,7 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public ItemDTO getItem() {
+	public ItemDTO getItemDTO() {
 		return itemDTO;
 	}
 
@@ -37,6 +37,6 @@ public class Item {
 		if(!(anotherObject instanceof Item))
 			return false;
 		Item item = (Item)anotherObject;
-		return itemDTO.equals(item.getItem());
+		return itemDTO.equals(item.getItemDTO());
 	}
 }

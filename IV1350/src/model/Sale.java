@@ -68,7 +68,7 @@ public class Sale {
     public Receipt createReceipt(int amountPaid){
         float tax = 0;
         for(int i = 0; i < listOfItems.size(); i++) {
-        	tax += (listOfItems.get(i).getItem().getPrice() * (listOfItems.get(i).getQuantity()*listOfItems.get(i).getItem().getTax()));
+        	tax += (listOfItems.get(i).getItemDTO().getPrice() * (listOfItems.get(i).getQuantity()*listOfItems.get(i).getItemDTO().getTax()));
         }
         return new Receipt(this, amountPaid, timeOfSale, tax);
     }
