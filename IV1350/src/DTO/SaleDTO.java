@@ -2,37 +2,48 @@ package DTO;
 
 import java.util.ArrayList;
 
+import model.Item;
+
 public class SaleDTO {
 
     private final float total;
-    private final ArrayList<ItemInSale> itemsInSale;
+    private final ArrayList<Item> listOfItems;
 
-    public SaleDTO(float total, ArrayList<ItemInSale> itemsInSale){
+    /**
+     * Class Constructor
+     * @param total <code>float</code> The total cost of the sale
+     * @param itemsInSale <code>ArrayList</code> Containing all the items that are in the sale
+     */
+    public SaleDTO(float total, ArrayList<Item> itemsInSale){
         this.total = total;
-        this.itemsInSale = itemsInSale;
+        this.listOfItems = itemsInSale;
     }
 
     public float getTotal() {
         return total;
     }
 
-    public ItemInSale getItem(int index){
-       return itemsInSale.get(index);
+    public Item getItem(int index){
+       return listOfItems.get(index);
     }
 
-    public ItemInSale getLastItem(){
-        return itemsInSale.get((itemsInSale.size()-1));
+    public Item getLastItem(){
+        return listOfItems.get((listOfItems.size()-1));
     }
     
+    /**
+     * 
+     * @return The amount of items that are in the sale
+     */
     public int amountOfItems() {
     	int amount = 0;
-    	for(int i = 0; i < itemsInSale.size(); i++) {
-    		amount += itemsInSale.get(i).getQuantity();
+    	for(int i = 0; i < listOfItems.size(); i++) {
+    		amount += listOfItems.get(i).getQuantity();
     	}
     	return amount;
     }
 
-    public ArrayList<ItemInSale> getItemsInSale() {
-        return itemsInSale;
+    public ArrayList<Item> getItemsInSale() {
+        return listOfItems;
     }
 }

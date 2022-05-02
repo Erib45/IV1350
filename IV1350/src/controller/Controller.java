@@ -13,7 +13,11 @@ public class Controller {
     private DbHandler dbHandler;
     private Printer printer;
     private Sale sale;
-
+    
+    /**
+     * Class constructor
+     * @param register a register containing an amount of cash
+     */
     public Controller(Register register){
         this.register = register;
         dbHandler = new DbHandler();
@@ -44,12 +48,11 @@ public class Controller {
     }
     
    /** 
-    * @override 
     * @param itemID a integer identifying an item.
     * @return <code>String</code> containing the running price of the sale and
     * name and description of the item that was added.
     */
-  //check item?
+    //check item?
     public String addItem(int itemID){
         ItemDTO item = dbHandler.getItemInfo(itemID);
         sale.addItem(item, 1);
@@ -66,18 +69,20 @@ public class Controller {
      * with discount applied.
      */
     public float applyDiscount(int customerID){
-    	sale.applyDiscount(dbHandler.getDiscount(customerID, sale.getSale()));
+    	sale.applyDiscount(customerID);
         return sale.getTotal();
     }
 
-    public void endSale(){
-    	
-    }
-
+    /**
+     * This method confirms payment and returns the receipt proving the purchase
+     * @param amount <code>int</code> describing the amount payed
+     * @return <code>Receipt</code> containing information about the purchase
+     */
+    //return null should be replaced with an exception
     public Receipt enterPayment(int amount){
-    	Receipt receipt = sale.getReceipt(amount);
+    	sale.endSale();
+    	Receipt receipt = sale.createReceipt(amount);
     	if (receipt.getTotal() > amount) {
-    		System.out.println("More mani plozx");
     		return null;
     	}
     	else {

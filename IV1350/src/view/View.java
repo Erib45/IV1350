@@ -10,7 +10,7 @@ public class View {
         this.controller = controller;
 
     }
-    
+
     public void runProgram() {
     	controller.startSale();
         controller.addItem(1);

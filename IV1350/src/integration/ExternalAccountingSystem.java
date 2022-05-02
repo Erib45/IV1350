@@ -3,10 +3,17 @@ package integration;
 import DTO.SaleDTO;
 
 public class ExternalAccountingSystem {
+	/**
+	 * 
+	 */
     ExternalAccountingSystem(){
     	
     }
-    public void logSale(SaleDTO sale) {
+    /**
+     * Logs the sale
+     * @param saleDTO Describing a sale
+     */
+    public void logSale(SaleDTO saleDTO) {
     	//Sale is now logged :)
     }
 }

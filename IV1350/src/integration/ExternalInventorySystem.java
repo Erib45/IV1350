@@ -1,8 +1,8 @@
 package integration;
 
 import DTO.ItemDTO;
-import DTO.ItemInSale;
 import DTO.SaleDTO;
+import model.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,17 +17,20 @@ public class ExternalInventorySystem {
         items.put(2, new ItemData(5, 2, 25, 0.1f, "name2", "description2"));
         items.put(3, new ItemData(12, 3, 55, 0.15f, "name3", "description3"));
     }
-
+    
+    /**
+     * Class constructor
+     */
     ExternalInventorySystem(){
         addItems();
     }
     
     /**
      * Logs the sale in the Inventory system
-     * @param sale SaleDTO describing the current sale
+     * @param saleDTO SaleDTO describing a sale
      */
-    public void logSale(SaleDTO sale) {
-    	ArrayList<ItemInSale> list = sale.getItemsInSale();
+    public void logSale(SaleDTO saleDTO) {
+    	ArrayList<Item> list = saleDTO.getItemsInSale();
     	for(int i = 0; i < list.size(); i++) {
     		if(items.containsKey(list.get(i).getItem().getID())) {
     			items.get(list.get(i).getItem().getID()).quantity--;
@@ -36,16 +39,11 @@ public class ExternalInventorySystem {
     }
     
     /**
-     * Check if item identifier exits in inventorySystem
-     * @param itemID Integer identifying an item.
-     * @return true if item exists.
+     * Gets a ItemDTO describing the item with the corresponding ID
+     * @param itemID ID of an item
+     * @return <code>ItemDTO</code> Describes an item
      */
-    
-    private boolean checkItem(int itemID){
-        return items.containsKey(itemID);
-    }
-
-    //
+    //return null should be replaced with an exception
     ItemDTO getItemInfo(int itemID){
         if(items.containsKey(itemID)){
                 return new ItemDTO(items.get(itemID).ID, items.get(itemID).price,items.get(itemID).tax,

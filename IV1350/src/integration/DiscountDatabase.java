@@ -27,6 +27,7 @@ public class DiscountDatabase {
      * @return <code>float</code> containing the discount
      * percentage the sale is eligible for.
      */
+    //Maximum discount is set to 90%
     float checkDiscount(int customerID, SaleDTO saleDTO){
         float percentage = 1;
         if(discounts.containsKey(customerID)){
@@ -35,7 +36,6 @@ public class DiscountDatabase {
         if(saleDTO.amountOfItems() >= 10){
             percentage -= 0.10;
         }
-        //Maximum discount is set to 90%
         if (percentage < 0.1) 
         	percentage = 0.1f;
         return percentage;

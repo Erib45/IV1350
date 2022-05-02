@@ -8,6 +8,10 @@ public class Printer {
     public Printer(){
     	
     }
+    /**
+     * Prints receipt
+     * @param receipt Containing information about the purchase
+     */
     public void printReceipt(Receipt receipt) {
     	DecimalFormat df = new DecimalFormat("#.##");
     	System.out.println("#1 Paid: " +  df.format(receipt.getAmountPaid()));

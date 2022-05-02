@@ -9,6 +9,9 @@ public class DbHandler {
     private ExternalInventorySystem invSys;
     private ExternalAccountingSystem accSys;
 
+    /**
+     * Class constructor
+     */
     public DbHandler(){
         this.discountDb = new DiscountDatabase();
         this.invSys = new ExternalInventorySystem();
@@ -27,7 +30,7 @@ public class DbHandler {
     /**
      * Returns total price of sale with discount included.
      * @param customerID Integer identifying customer.
-     * @param saleDTO   DTO containing information about a sale.
+     * @param saleDTO DTO containing information about a sale.
      * @return <code>float<code/> containing the new total price
      * of the sale with discount included.
      */
@@ -36,8 +39,12 @@ public class DbHandler {
         return discount;
     }
     
-    public void logSale(SaleDTO sale) {
-    	accSys.logSale(sale);
-    	invSys.logSale(sale);
+    /**
+     * Logs the sale 
+     * @param saleDTO describing a sale
+     */
+    public void logSale(SaleDTO saleDTO) {
+    	accSys.logSale(saleDTO);
+    	invSys.logSale(saleDTO);
     }
 }

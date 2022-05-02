@@ -4,9 +4,17 @@ public class ItemDTO {
     private final int ID, price;
     private final float tax;
     private final String name, description;
-
+    
+    /**
+     * Class constructor
+     * @param ID identifies the item
+     * @param price cost of the item
+     * @param tax the percentage of tax on the item
+     * @param name the name of the item
+     * @param description describing the item
+     */
     public ItemDTO(int ID, int price, float tax,
-                   String name, String description){
+        String name, String description){
         this.ID = ID;
         this.price = price;
         this.tax = tax;
@@ -25,7 +33,7 @@ public class ItemDTO {
     public String getName() {
         return name;
     }
-
+ 
     public String getDescription() {
         return description;
     }
@@ -34,13 +42,14 @@ public class ItemDTO {
     	return ID;
     }
     
+    
     @Override
-    public boolean equals(Object o) {
-    	if (o == this)
+    public boolean equals(Object anotherObject) {
+    	if (anotherObject == this)
     		return true;
-    	if (!(o instanceof ItemDTO)) 
+    	if (!(anotherObject instanceof ItemDTO)) 
     		return false;
-    	ItemDTO itemDTO = (ItemDTO) o;
+    	ItemDTO itemDTO = (ItemDTO) anotherObject;
     	if(itemDTO.getID() == ID)
     		return true;
     	return false;
