@@ -38,7 +38,6 @@ public class Controller {
      * @return  <code>String</code> containing the running price of the sale and
      * name and description of the item that was added.
      */
-    //check item?
     public String addItem(int itemID, int quantity){
         ItemDTO item = dbHandler.getItemInfo(itemID);
         sale.addItem(item, quantity);
@@ -52,7 +51,6 @@ public class Controller {
     * @return <code>String</code> containing the running price of the sale and
     * name and description of the item that was added.
     */
-    //check item?
     public String addItem(int itemID){
         ItemDTO item = dbHandler.getItemInfo(itemID);
         sale.addItem(item, 1);

@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"model","c":"Receipt","l":"getAmountPaid()"},{"p":"model","c":"Receipt","l":"getChange()"},{"p":"model","c":"Receipt","l":"getItemsInSale()"},{"p":"model","c":"Receipt","l":"getTimeOfSale()"},{"p":"model","c":"Receipt","l":"getTotal()"},{"p":"model","c":"Receipt","l":"getTotalTax()"}]
