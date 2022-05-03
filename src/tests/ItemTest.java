@@ -12,19 +12,13 @@ import DTO.ItemDTO;
 import model.Item;
 
 class ItemTest {
-	
-
-/*	int ID = 1;
-	int  price = 15;
-	float tax  = 0.08f;
-	String name = "name1";
-	String   description = "description1"; */
-   
-    Item item = new Item(new ItemDTO(1, 15, 0.08f,"name1", "description1"),1);
-    Item otherItem = new Item(new ItemDTO(5, 25, 0.1f, "name2", "description2"),1);
+	Item item;
+	Item otherItem;
 
 	@BeforeEach
 	void setUp() throws Exception {
+	 item = new Item(new ItemDTO(1, 15, 0.08f,"name1", "description1"),1);
+	 otherItem = new Item(new ItemDTO(5, 25, 0.1f, "name2", "description2"),1);
 	}
 
 	@AfterEach
