@@ -83,6 +83,16 @@ class SaleTest {
 	}
 	
 	@Test
+	void applyDiscountInvalidTest() {
+		sale.addItem(itemDTO, 2);
+		float expected = (itemDTO.getPrice() * 2);
+		sale.applyDiscount(108);
+		float actual = sale.getTotal();
+		assertEquals(expected, actual, "applyDiscountTest() fail");
+	}
+	
+	
+	@Test
 	void endSaleTest() {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		sale.endSale(); 
