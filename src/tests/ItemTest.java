@@ -16,13 +16,13 @@ class ItemTest {
 	Item otherItem;
 
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp()  {
 	 item = new Item(new ItemDTO(1, 15, 0.08f,"name1", "description1"),1);
 	 otherItem = new Item(new ItemDTO(5, 25, 0.1f, "name2", "description2"),1);
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	void tearDown() {
 	}
 
 	@Test
