@@ -30,8 +30,7 @@ public class ExternalInventorySystem {
     public void logSale(SaleDTO saleDTO) {
         for(int i = 0; i < saleDTO.getItemsInSale().size(); i++) {
             if(items.containsKey(saleDTO.getItem(i).getItemDTO().getID())) {
-                ItemData itemData = items.get(saleDTO.getItem(i).getItemDTO().getID());
-                itemData.updateQuantity(-saleDTO.getItem(i).getQuantity());
+                items.get(saleDTO.getItem(i).getItemDTO().getID()).quantity--;
             }
         }
     }
