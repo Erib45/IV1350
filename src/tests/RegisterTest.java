@@ -1,6 +1,5 @@
-package tests;
+package integration;
 
-import integration.Register;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -15,7 +14,6 @@ class RegisterTest {
     @BeforeEach
     void setUp() {
         register = new Register();
-        int balance = 500;
     }
 
     @AfterEach
@@ -27,9 +25,9 @@ class RegisterTest {
         register.updateBalance(50);
         int expected = 550;
         int actual = register.getBalance();
-        assertEquals(expected, actual, "updateBalance() fail");
+        assertEquals(expected, actual, "Balance was not updated");
     }
-    
+
     @Test
     @Disabled
     void getBalance() {
