@@ -30,7 +30,8 @@ public class ExternalInventorySystem {
     public void logSale(SaleDTO saleDTO) {
         for(int i = 0; i < saleDTO.getItemsInSale().size(); i++) {
             if(items.containsKey(saleDTO.getItem(i).getItemDTO().getID())) {
-                items.get(saleDTO.getItem(i).getItemDTO().getID()).quantity--;
+                items.get(saleDTO.getItem(i).getItemDTO().getID())
+                        .updateQuantity(-saleDTO.getItem(i).getQuantity());
             }
         }
     }
@@ -48,6 +49,7 @@ public class ExternalInventorySystem {
         }
         return null;
     }
+
 
     /*Private static inner class representing
     mutable data stored in a database.*/
