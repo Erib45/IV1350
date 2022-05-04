@@ -28,6 +28,30 @@ public class ItemDTOTest {
     void tearDown(){
 
     }
+    
+    @Test
+    void equalsIsEqualsTest() {
+    	ItemDTO anotherItemDTO = new ItemDTO(1, 23, 0.02f, "Test", "Testing");
+    	boolean expected = true;
+    	boolean actual = itemDTO.equals(anotherItemDTO);
+    	assertEquals(expected, actual, "equalsIsEqualsTest() fail");
+    }
+    
+    @Test
+    void equalsIsNotEqualsTest() {
+    	ItemDTO anotherItemDTO = new ItemDTO(2, 23, 0.02f, "Test", "Testing");
+    	boolean expected = false;
+    	boolean actual = itemDTO.equals(anotherItemDTO);
+    	assertEquals(expected, actual, "equalsIsNotEqualsTest() fail");
+    }
+    
+    @Test
+    void equalsDifferentObjectTest() {
+    	Object anotherObject = new Object();
+    	boolean expected = false;
+    	boolean actual = itemDTO.equals(anotherObject);
+    	assertEquals(expected, actual, "equalsDifferentObjectTest() fail");
+    }
 
     @Test
     void getPriceTest(){
