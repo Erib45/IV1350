@@ -10,14 +10,12 @@ import org.junit.jupiter.api.*;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ExternalInventorySystemTest {
 
     private ExternalInventorySystem invSys;
     private HashMap<Integer, ItemData> items;
-    private SaleDTO saleDTO;
-    private ItemDTO itemDTO;
-
 
 
     @BeforeEach
@@ -29,9 +27,8 @@ class ExternalInventorySystemTest {
         invSys = new ExternalInventorySystem();
         DbHandler dbHandler = new DbHandler();
         Sale sale = new Sale(dbHandler);
-        itemDTO = dbHandler.getItemInfo(1);
+        ItemDTO itemDTO = dbHandler.getItemInfo(1);
         sale.addItem(itemDTO,1);
-        saleDTO = sale.getSale();
     }
 
     @AfterEach
@@ -41,17 +38,18 @@ class ExternalInventorySystemTest {
     }
 
     @Test
-    void logSaleTest() {
-        invSys.logSale(saleDTO);
-        int expected = 9;
-        int actual = items.get(1).quantity;
-        assertEquals(expected, actual, "logSale() fail");
-
+    void getItemInfoTest() {
+        int itemID = 1;
+        ItemDTO actual = invSys.getItemInfo(itemID);
+        ItemDTO expected = new ItemDTO(items.get(itemID).ID, items.get(itemID).price,items.get(itemID).tax,
+                items.get(itemID).name, items.get(itemID).description);
+        assertEquals(expected, actual, "Correct item was not returned");
     }
 
     @Test
-    @Disabled
-    void getItemInfoTest() {
+    void getItemInfoInvalidIDTest() {
+        ItemDTO actual = invSys.getItemInfo(0);
+        assertNull(actual,  "ItemDTO was returned even though itemID doesn't exist");
     }
 
     /*Private static inner class representing
