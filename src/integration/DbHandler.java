@@ -35,8 +35,7 @@ public class DbHandler {
      * of the sale with discount included.
      */
     public float getDiscount(int customerID, SaleDTO saleDTO){
-        float discount = discountDb.checkDiscount(customerID, saleDTO );
-        return discount;
+        return discountDb.checkDiscount(customerID, saleDTO );
     }
     
     /**

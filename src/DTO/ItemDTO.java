@@ -46,7 +46,7 @@ public class ItemDTO {
     public boolean equals(Object anotherObject) {
     	if (anotherObject == this)
     		return true;
-    	if (!(anotherObject instanceof ItemDTO)) 
+    	if (!(anotherObject instanceof ItemDTO))
     		return false;
     	ItemDTO itemDTO = (ItemDTO) anotherObject;
     	if(itemDTO.getID() == ID)
