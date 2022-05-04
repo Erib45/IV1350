@@ -8,7 +8,7 @@ public class Register {
      * Class constructor 
      */
     public Register(){
-    	balance = 500;
+    	balance = 10000;
     }
     /**
      * Update register balance
