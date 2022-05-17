@@ -8,6 +8,11 @@ import se.kth.iv1350.integration.Register;
 import se.kth.iv1350.integration.ItemidInvalidException;
 import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.model.Sale;
+import se.kth.iv1350.model.TotalRevenueObserver;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Controller is the central class that communicates with many other classes to retrieve values for the view 
  * or change states in different objects by adding items or applying a discount
@@ -21,7 +26,8 @@ public class Controller {
     private DbHandler dbHandler;
     private Printer printer;
     private Sale sale;
-    
+    private List<TotalRevenueObserver> TotalRevenueObservers = new ArrayList<>();
+
     /**
      * Class constructor
      */
@@ -36,6 +42,7 @@ public class Controller {
      */
     public void startSale(){
         sale = new Sale(dbHandler);
+        sale.addTotalRevenueObservers(TotalRevenueObservers);
     }
 
     /**
@@ -96,5 +103,14 @@ public class Controller {
     	printer.printReceipt(receipt);
         return receipt;
     	}
+    }
+
+    /**
+     *
+     * @param totalRevenueObserver
+     */
+    public void addTotalRevenueObserver(TotalRevenueObserver totalRevenueObserver)
+    {
+        TotalRevenueObservers.add(totalRevenueObserver);
     }
 }

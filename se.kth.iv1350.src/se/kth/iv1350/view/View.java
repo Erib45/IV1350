@@ -21,7 +21,7 @@ public class View {
 
     public View(se.kth.iv1350.controller.Controller controller){
         this.controller = controller;
-
+        controller.addTotalRevenueObserver(new TotalRevenueView());
     }
 
     public void runProgram() throws OperationFailedException{

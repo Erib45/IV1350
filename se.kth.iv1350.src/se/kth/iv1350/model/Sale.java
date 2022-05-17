@@ -6,9 +6,10 @@ import se.kth.iv1350.integration.DbHandler;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Sale is a ongoing sale where you can update the sale and change its values while the sale progresses. 
+ * Sale is an ongoing sale where you can update the sale and change its values while the sale progresses.
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg
@@ -19,9 +20,21 @@ public class Sale {
     private String timeOfSale;
     private DbHandler dbHandler;
     private ArrayList<Item> itemsInSale = new ArrayList<>();
+    private List<TotalRevenueObserver> TotalRevenueObservers = new ArrayList<>();
 
     public Sale(DbHandler dbHandler){
         this.dbHandler = dbHandler;
+    }
+
+    public void addTotalRevenueObservers(List<TotalRevenueObserver> totalRevenueObservers)
+    {
+        TotalRevenueObservers.addAll(totalRevenueObservers);
+    }
+
+    private void notifyObservers() {
+        for (TotalRevenueObserver revenueObserver : TotalRevenueObservers ){
+            revenueObserver.newSale(getSale());
+        }
     }
 
     /**
@@ -76,6 +89,7 @@ public class Sale {
         for(int i = 0; i < itemsInSale.size(); i++) {
         	tax += (itemsInSale.get(i).getItemDTO().getPrice() * (itemsInSale.get(i).getQuantity()* itemsInSale.get(i).getItemDTO().getTax()));
         }
+        notifyObservers();
         return new Receipt(this, amountPaid, timeOfSale, tax);
     }
     
