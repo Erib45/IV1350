@@ -22,6 +22,7 @@ public class View {
     public View(se.kth.iv1350.controller.Controller controller){
         this.controller = controller;
         controller.addTotalRevenueObserver(new TotalRevenueView());
+        controller.addTotalRevenueObserver(new TotalRevenueFileOutput());
     }
 
     public void runProgram() throws OperationFailedException{
@@ -32,7 +33,7 @@ public class View {
         System.out.println("Adding item with itemID 2");
         addItem(2);
         System.out.println("Adding 2 of item with itemID 3");
-        addItem(5, 2);
+        addItem(3, 2);
         System.out.println("Adding 3 of item with itemID 8");
         addItem(8, 3);
         System.out.println("Adding item with itemID 1");
@@ -42,6 +43,27 @@ public class View {
         System.out.println("Adding item with itemID 3");
         addItem(3);
         System.out.println("Applying a discount for costumerID 101");
+        System.out.println("New total: " + controller.applyDiscount(101) + "\n");
+        System.out.println("Costumer pays 1000\n");
+        controller.enterPayment(1000);
+        
+        System.out.println("\nStarting new sale");
+    	controller.startSale();
+    	System.out.println("Adding item with itemID 2");
+        addItem(2);
+        System.out.println("Adding item with itemID 2");
+        addItem(2);
+        System.out.println("Adding 2 of item with itemID 1");
+        addItem(1, 2);
+        System.out.println("Adding 3 of item with itemID 8");
+        addItem(8, 3);
+        System.out.println("Adding item with itemID 3");
+        addItem(3);
+        System.out.println("Adding 4 of item with itemID 2");
+        addItem(2, 4);
+        System.out.println("Adding item with itemID 3");
+        addItem(3);
+        System.out.println("Applying a discount for costumerID 103");
         System.out.println("New total: " + controller.applyDiscount(101) + "\n");
         System.out.println("Costumer pays 1000\n");
         controller.enterPayment(1000);

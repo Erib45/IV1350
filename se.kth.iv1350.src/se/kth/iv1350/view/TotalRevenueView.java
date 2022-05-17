@@ -10,6 +10,6 @@ public class TotalRevenueView implements TotalRevenueObserver {
     @Override
     public void newSale(SaleDTO saleDTO) {
         total += saleDTO.getTotal();
-        System.out.println("Total revenue: " + total);
+        System.out.println("Total revenue: " + total +"\n");
     }
 }

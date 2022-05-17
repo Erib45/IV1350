@@ -1,5 +1,8 @@
 /shelf/
 /workspace.xml
 bin/
+.project
+.classpath
+outputFile.txt
 out/
 .idea/
