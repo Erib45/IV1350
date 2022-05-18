@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExternalInventorySystemTest {
 
@@ -46,9 +47,14 @@ class ExternalInventorySystemTest {
 
     @Test
     void getItemInfoInvalidIDTest() throws ItemidInvalidException, DatabaseConnectionErrorException {
-        ItemDTO actual = invSys.getItemInfo(0);
-        assertNull(actual,  "ItemDTO was returned even though itemID doesn't exist");
+    	try {
+    		ItemDTO actual = invSys.getItemInfo(0);
+    	}catch(Exception e) {
+    		assertTrue(e.getMessage().contains("0"), "The wrong itemID has been registered in the exception"
+    				+ " or the exception was not thrown correctly");
+    	}
     }
+    
 
     /*Private static inner class representing
     mutable data stored in a database.*/

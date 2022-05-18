@@ -106,8 +106,8 @@ public class Controller {
     }
 
     /**
-     *
-     * @param totalRevenueObserver
+     * Adds a observer to the list of observers in controller
+     * @param totalRevenueObserver a observer observing the total revenue since the start of the program
      */
     public void addTotalRevenueObserver(TotalRevenueObserver totalRevenueObserver)
     {

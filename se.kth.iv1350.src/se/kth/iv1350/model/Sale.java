@@ -15,7 +15,6 @@ import java.util.List;
  * @author Rolf Dahlberg
  */
 public class Sale {
-
     private float total;
     private String timeOfSale;
     private DbHandler dbHandler;
@@ -26,16 +25,7 @@ public class Sale {
         this.dbHandler = dbHandler;
     }
 
-    public void addTotalRevenueObservers(List<TotalRevenueObserver> totalRevenueObservers)
-    {
-        TotalRevenueObservers.addAll(totalRevenueObservers);
-    }
-
-    private void notifyObservers() {
-        for (TotalRevenueObserver revenueObserver : TotalRevenueObservers ){
-            revenueObserver.newSale(getSale());
-        }
-    }
+   
 
     /**
      * Add item to sale and updates sale total.
@@ -102,7 +92,22 @@ public class Sale {
         return total;
     }
     
+    
+    /**
+     * Adds a list of observers to the object
+     * @param totalRevenueObservers a list of observers
+     */
+    public void addTotalRevenueObservers(List<TotalRevenueObserver> totalRevenueObservers)
+    {
+        TotalRevenueObservers.addAll(totalRevenueObservers);
+    }
 
+   
+    private void notifyObservers() {
+        for (TotalRevenueObserver revenueObserver : TotalRevenueObservers ){
+            revenueObserver.newSale(getSale());
+        }
+    }
     
     
 

@@ -12,10 +12,10 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver {
 	
 	public void revenueFileOutput() {
 		    try {
-		      File outputFile = new File("se.kth.iv1350.src\\se\\kth\\iv1350\\view\\outputFile.txt");
+		      File outputFile = new File("outputFile.txt");
 		      outputFile.delete();
 		      outputFile.createNewFile();
-		      FileWriter writer = new FileWriter("se.kth.iv1350.src\\se\\kth\\iv1350\\view\\outputFile.txt");
+		      FileWriter writer = new FileWriter("outputFile.txt");
 		      writer.write("Total revenue: " + totalRevenue);
 		      writer.close();
 		      System.out.println("Successfully wrote to the file.");

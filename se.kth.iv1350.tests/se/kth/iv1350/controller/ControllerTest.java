@@ -55,7 +55,8 @@ class ControllerTest {
     	try {
         controller.addItem(5);
     	}catch(ItemidInvalidException e) {
-    		assertTrue(e.getMessage().contains("5"), "The wrong itemID has been registered in the exception");
+    		assertTrue(e.getMessage().contains("5"), "The wrong itemID has been registered in the exception"
+    				+ " or the exception was not thrown correctly");
     	}
 
     }
@@ -74,7 +75,8 @@ class ControllerTest {
     	try {
     		 controller.addItem(0, 3);
     	}catch(ItemidInvalidException e) {
-    		assertTrue(e.getMessage().contains("0"), "The wrong itemID has been registered in the exception");
+    		assertTrue(e.getMessage().contains("0"), "The wrong itemID has been registered in the exception"
+    				+ " or the exception was not thrown correctly");
     	}      
     }
 
