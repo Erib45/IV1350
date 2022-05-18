@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import se.kth.iv1350.DTO.SaleDTO;
 import se.kth.iv1350.integration.DatabaseConnectionErrorException;
 import se.kth.iv1350.integration.DbHandler;
-import se.kth.iv1350.integration.ItemidInvalidException;
+import se.kth.iv1350.integration.ItemIDInvalidException;
 import se.kth.iv1350.model.Item;
 import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.model.Sale;
@@ -22,7 +22,7 @@ class ControllerTest {
     private DbHandler dbHandler = new DbHandler();
 
     @BeforeEach
-    void setUp() throws ItemidInvalidException, DatabaseConnectionErrorException {
+    void setUp() throws ItemIDInvalidException, DatabaseConnectionErrorException {
         this.controller = new Controller();
         controller.startSale();
         sale = new Sale(dbHandler);
@@ -42,7 +42,7 @@ class ControllerTest {
     }
 
     @Test
-    void testAddItemValidID() throws ItemidInvalidException, OperationFailedException {
+    void testAddItemValidID() throws ItemIDInvalidException, OperationFailedException {
         String expected = "Total: 25.0 Item: name2\ndescription2";
         SaleDTO saleDTO = controller.addItem(2).getSale();
         String actual = "Total: " + saleDTO.getTotal() + " Item: " + saleDTO.getItemWithID(2).getItemDTO().getName() + "\n" + saleDTO.getItemWithID(2).getItemDTO().getDescription();
@@ -51,10 +51,10 @@ class ControllerTest {
     }
 
     @Test
-    void testAddItemInvalidID() throws ItemidInvalidException, OperationFailedException {
+    void testAddItemInvalidID() throws OperationFailedException{
     	try {
         controller.addItem(5);
-    	}catch(ItemidInvalidException e) {
+    	}catch(ItemIDInvalidException e) {
     		assertTrue(e.getMessage().contains("5"), "The wrong itemID has been registered in the exception"
     				+ " or the exception was not thrown correctly");
     	}
@@ -62,7 +62,17 @@ class ControllerTest {
     }
 
     @Test
-    void testAddItemWithQuantityValidID() throws ItemidInvalidException, OperationFailedException {
+    void testAddItemNoConnectionToDatabase() throws ItemIDInvalidException {
+        try {
+            controller.addItem(50);
+        }catch(OperationFailedException e) {
+            assertTrue(e.getCause().getMessage().contains("Connection to the inventory database could not be established"),
+                     "The exception was not thrown correctly");
+        }
+    }
+
+    @Test
+    void testAddItemWithQuantityValidID() throws ItemIDInvalidException, OperationFailedException {
         String expected = "Total: 75.0 Item: name2\ndescription2";
         SaleDTO saleDTO = controller.addItem(2, 3).getSale();
         String actual = "Total: " + saleDTO.getTotal() + " Item: " + saleDTO.getItemWithID(2).getItemDTO().getName() + "\n" + saleDTO.getItemWithID(2).getItemDTO().getDescription();
@@ -71,17 +81,17 @@ class ControllerTest {
     }
 
     @Test
-    void testAddItemWithQuantityInvalidID() throws ItemidInvalidException, OperationFailedException {
+    void testAddItemWithQuantityInvalidID() throws OperationFailedException{
     	try {
     		 controller.addItem(0, 3);
-    	}catch(ItemidInvalidException e) {
+    	}catch(ItemIDInvalidException e) {
     		assertTrue(e.getMessage().contains("0"), "The wrong itemID has been registered in the exception"
     				+ " or the exception was not thrown correctly");
     	}      
     }
 
     @Test
-    void testApplyDiscountEligable() throws ItemidInvalidException, OperationFailedException {
+    void testApplyDiscountEligable() throws ItemIDInvalidException, OperationFailedException {
         controller.addItem(1, 2);
         controller.addItem(2);
         float expected = 52.25f;
@@ -91,7 +101,7 @@ class ControllerTest {
     }
 
     @Test
-    void testApplyDiscountNotEligable() throws ItemidInvalidException, OperationFailedException {
+    void testApplyDiscountNotEligable() throws ItemIDInvalidException, OperationFailedException {
         controller.addItem(1, 2);
         controller.addItem(2);
         float expected = 55f;
@@ -100,7 +110,7 @@ class ControllerTest {
 
     }
     @Test
-    void testApplyDiscountMoreThanTen() throws ItemidInvalidException, OperationFailedException {
+    void testApplyDiscountMoreThanTen() throws ItemIDInvalidException, OperationFailedException {
         controller.addItem(1, 5);
         controller.addItem(2, 3);
         controller.addItem(3, 5);
@@ -112,7 +122,7 @@ class ControllerTest {
 
 
     @Test
-    void testEnterPaymentPaymentValidWithChange() throws ItemidInvalidException, OperationFailedException {
+    void testEnterPaymentPaymentValidWithChange() throws ItemIDInvalidException, OperationFailedException {
         controller.addItem(1, 5);
         controller.addItem(2, 3);
         controller.addItem(3, 5);
@@ -141,7 +151,7 @@ class ControllerTest {
     }
 
     @Test
-    void testEnterPaymentPaymentValidNoChange() throws ItemidInvalidException, OperationFailedException {
+    void testEnterPaymentPaymentValidNoChange() throws ItemIDInvalidException, OperationFailedException {
         controller.addItem(1, 5);
         controller.addItem(2, 3);
         controller.addItem(3, 5);
@@ -170,7 +180,7 @@ class ControllerTest {
     }
 
     @Test
-    void testEnterPaymentInvalid() throws ItemidInvalidException, OperationFailedException {
+    void testEnterPaymentInvalid() throws ItemIDInvalidException, OperationFailedException {
         controller.addItem(1, 5);
         controller.addItem(2, 3);
         controller.addItem(3, 5);

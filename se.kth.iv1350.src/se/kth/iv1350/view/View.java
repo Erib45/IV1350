@@ -6,8 +6,7 @@ import java.time.format.DateTimeFormatter;
 import se.kth.iv1350.DTO.SaleDTO;
 import se.kth.iv1350.controller.Controller;
 import se.kth.iv1350.controller.OperationFailedException;
-import se.kth.iv1350.integration.DatabaseConnectionErrorException;
-import se.kth.iv1350.integration.ItemidInvalidException;
+import se.kth.iv1350.integration.ItemIDInvalidException;
 
 /**
  * View represent the user interface which in this program is hard coded to run through a possible scenario
@@ -42,9 +41,9 @@ public class View {
         addItem(1, 4);
         System.out.println("Adding item with itemID 3");
         addItem(3);
-        System.out.println("Applying a discount for costumerID 101");
+        System.out.println("Applying a discount for customerID 101");
         System.out.println("New total: " + controller.applyDiscount(101) + "\n");
-        System.out.println("Costumer pays 1000\n");
+        System.out.println("Customer pays 1000\n");
         controller.enterPayment(1000);
         
         System.out.println("\nStarting new sale");
@@ -63,9 +62,9 @@ public class View {
         addItem(2, 4);
         System.out.println("Adding item with itemID 3");
         addItem(3);
-        System.out.println("Applying a discount for costumerID 103");
+        System.out.println("Applying a discount for customerID 103");
         System.out.println("New total: " + controller.applyDiscount(101) + "\n");
-        System.out.println("Costumer pays 1000\n");
+        System.out.println("Customer pays 1000\n");
         controller.enterPayment(1000);
     }
     
@@ -75,12 +74,12 @@ public class View {
     
     void addItem(int itemID, int quantity) throws OperationFailedException {
     	try {
-    	SaleDTO saleDTO = controller.addItem(itemID, quantity).getSale();
-    	System.out.println("New total: " + saleDTO.getTotal() + "\nItem: " + saleDTO.getItemWithID(itemID).getItemDTO().getName() + "\n" + saleDTO.getItemWithID(itemID).getItemDTO().getDescription() +"\n");
-    	}catch(ItemidInvalidException e) {
-    		System.out.println("\n*TO USER INTERFACE* " + e.getMessage() + "\n");
-    		logMsg(e);
-    	}
+            SaleDTO saleDTO = controller.addItem(itemID, quantity).getSale();
+            System.out.println("New total: " + saleDTO.getTotal() + "\nItem: " + saleDTO.getItemWithID(itemID).getItemDTO().getName() + "\n" + saleDTO.getItemWithID(itemID).getItemDTO().getDescription() +"\n");
+            }catch(ItemIDInvalidException e) {
+                System.out.println("\n*TO USER INTERFACE* " + e.getMessage() + "\n");
+                logMsg(e);
+            }
     	}
     
     void logMsg(Exception e){

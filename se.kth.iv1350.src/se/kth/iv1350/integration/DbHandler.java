@@ -30,11 +30,10 @@ public class DbHandler {
      * Returns an itemDTO of the specified item if it exits in the database.
      * @param itemID Integer identifying an item.
      * @return <code>ItemDTO</code> DTO containing information about an item.
-     * @throws ItemidInvalidException 
-     * @throws OperationFailedException 
-     * @throws DatabaseConnectionErrorException 
+     * @throws ItemIDInvalidException If itemID could not be found in database.
+     * @throws DatabaseConnectionErrorException If connection to the inventory database could not be established.
      */
-    public ItemDTO getItemInfo(int itemID) throws ItemidInvalidException, DatabaseConnectionErrorException{
+    public ItemDTO getItemInfo(int itemID) throws ItemIDInvalidException, DatabaseConnectionErrorException{
        
        return invSys.getItemInfo(itemID);
     }

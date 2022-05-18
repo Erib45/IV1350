@@ -18,7 +18,7 @@ class ExternalInventorySystemTest {
 
 
     @BeforeEach
-    void setUp() throws ItemidInvalidException, DatabaseConnectionErrorException {
+    void setUp() throws ItemIDInvalidException, DatabaseConnectionErrorException {
         items = new HashMap<>();
         items.put(1, new ItemData(10, 1, 15, 0.08f, "name1", "description1"));
         items.put(2, new ItemData(5, 2, 25, 0.1f, "name2", "description2"));
@@ -37,7 +37,7 @@ class ExternalInventorySystemTest {
     }
 
     @Test
-    void getItemInfoTest() throws ItemidInvalidException, DatabaseConnectionErrorException {
+    void getItemInfoTest() throws ItemIDInvalidException, DatabaseConnectionErrorException {
         int itemID = 1;
         ItemDTO actual = invSys.getItemInfo(itemID);
         ItemDTO expected = new ItemDTO(items.get(itemID).ID, items.get(itemID).price,items.get(itemID).tax,
@@ -46,7 +46,7 @@ class ExternalInventorySystemTest {
     }
 
     @Test
-    void getItemInfoInvalidIDTest() throws ItemidInvalidException, DatabaseConnectionErrorException {
+    void getItemInfoInvalidIDTest() throws ItemIDInvalidException, DatabaseConnectionErrorException {
     	try {
     		ItemDTO actual = invSys.getItemInfo(0);
     	}catch(Exception e) {

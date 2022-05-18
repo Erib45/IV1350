@@ -7,7 +7,7 @@ import se.kth.iv1350.DTO.SaleDTO;
 
 /**
  * ExternalInventorySystem communicates with external server containing inventory system / database.
- * (In this case we have ourself simulated the external server)
+ * (In this case we have ourselves simulated the external server)
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg
@@ -46,10 +46,9 @@ public class ExternalInventorySystem {
      * Gets a ItemDTO describing the item with the corresponding ID.
      * @param itemID ID of an item.
      * @return <code>ItemDTO</code> DTO containing information about an item.
-     * @throws DatabaseConnectionErrorException 
+     * @throws DatabaseConnectionErrorException If connection to the inventory database could not be established.
      */
-    //return null should be replaced with an exception
-    ItemDTO  getItemInfo (int itemID) throws ItemidInvalidException, DatabaseConnectionErrorException{
+    ItemDTO  getItemInfo (int itemID) throws ItemIDInvalidException, DatabaseConnectionErrorException{
         if(items.containsKey(itemID)){
                 return new ItemDTO(items.get(itemID).ID, items.get(itemID).price,items.get(itemID).tax,
                         items.get(itemID).name, items.get(itemID).description);
@@ -57,7 +56,7 @@ public class ExternalInventorySystem {
         if(itemID == 50) {
         	throw new DatabaseConnectionErrorException("Connection to the inventory database could not be established");
         }
-        throw new ItemidInvalidException("The itemID " + itemID + " is not valid");
+        throw new ItemIDInvalidException("The itemID " + itemID + " is not valid");
     }
 
 

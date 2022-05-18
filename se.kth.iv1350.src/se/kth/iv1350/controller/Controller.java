@@ -5,7 +5,7 @@ import se.kth.iv1350.integration.DatabaseConnectionErrorException;
 import se.kth.iv1350.integration.DbHandler;
 import se.kth.iv1350.integration.Printer;
 import se.kth.iv1350.integration.Register;
-import se.kth.iv1350.integration.ItemidInvalidException;
+import se.kth.iv1350.integration.ItemIDInvalidException;
 import se.kth.iv1350.model.Receipt;
 import se.kth.iv1350.model.Sale;
 import se.kth.iv1350.model.TotalRevenueObserver;
@@ -51,10 +51,10 @@ public class Controller {
      * @param quantity Quantity of items with the same id added.
      * @return  <code>String</code> containing the running price of the sale and
      * name and description of the item that was added.
-     * @throws ItemidInvalidException 
-     * @throws OperationFailedException 
+     * @throws ItemIDInvalidException If itemID could not be found in database.
+     * @throws OperationFailedException If item could not be added.
      */
-    public Sale addItem(int itemID, int quantity) throws ItemidInvalidException, OperationFailedException{
+    public Sale addItem(int itemID, int quantity) throws ItemIDInvalidException, OperationFailedException{
     	try {
     	ItemDTO itemDTO = dbHandler.getItemInfo(itemID);
         sale.addItem(itemDTO, quantity);
@@ -68,10 +68,10 @@ public class Controller {
     * @param itemID a integer identifying an item.
     * @return <code>String</code> containing the running price of the sale and
     * name and description of the item that was added.
-    * @throws ItemidInvalidException 
-    * @throws OperationFailedException 
+    * @throws ItemIDInvalidException If itemID could not be found in database.
+    * @throws OperationFailedException If item could not be added.
     */
-   public Sale addItem(int itemID) throws ItemidInvalidException, OperationFailedException{
+   public Sale addItem(int itemID) throws ItemIDInvalidException, OperationFailedException{
 	   return addItem(itemID, 1);
    }
 

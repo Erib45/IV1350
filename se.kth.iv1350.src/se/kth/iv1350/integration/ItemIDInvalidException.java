@@ -5,9 +5,9 @@ package se.kth.iv1350.integration;
  * @author Rolf Dahlberg
  * @author Vanshu (OneShoe) Dutta
  */
-public class ItemidInvalidException extends Exception {
+public class ItemIDInvalidException extends Exception {
 
-	public ItemidInvalidException(String message) {
+	public ItemIDInvalidException(String message) {
 		super(message);
 	}	
 }
