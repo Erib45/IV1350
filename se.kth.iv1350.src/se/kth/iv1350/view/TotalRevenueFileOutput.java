@@ -16,7 +16,7 @@ public class TotalRevenueFileOutput implements TotalRevenueObserver {
 
 	private float totalRevenue;
 	
-	public void revenueFileOutput() {
+	private void revenueFileOutput() {
 		    try {
 		      File outputFile = new File("outputFile.txt");
 		      outputFile.delete();
