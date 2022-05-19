@@ -69,21 +69,23 @@ public class View {
         controller.enterPayment(1000);
     }
     
-    void addItem(int itemID) throws OperationFailedException {
-    	addItem(itemID, 1);
+    private void addItem(int itemID) throws OperationFailedException {
+        addItem(itemID, 1);
     }
-    
-    void addItem(int itemID, int quantity) throws OperationFailedException {
-    	try {
+
+    private void addItem(int itemID, int quantity) throws OperationFailedException {
+        try {
             SaleDTO saleDTO = controller.addItem(itemID, quantity).getSale();
-            System.out.println("New total: " + saleDTO.getTotal() + "\nItem: " + saleDTO.getItemWithID(itemID).getItemDTO().getName() + "\n" + saleDTO.getItemWithID(itemID).getItemDTO().getDescription() +"\n");
+            System.out.println("New total: " + saleDTO.getTotal() + "\nItem: " +
+                    saleDTO.getItemWithID(itemID).getItemDTO().getName() + "\n" +
+                    saleDTO.getItemWithID(itemID).getItemDTO().getDescription() +"\n");
             }catch(ItemIDInvalidException e) {
                 System.out.println("\n*TO USER INTERFACE* " + e.getMessage() + "\n");
                 logMsg(e);
             }
-    	}
-    
-    void logMsg(Exception e){
+        }
+
+    private void logMsg(Exception e){
     	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String time = LocalDateTime.now().format(dateTimeFormatter);
     	System.out.println("*LOG MESSAGE*\nError message: " + e.getMessage() + "\nTime of error: " + time);
