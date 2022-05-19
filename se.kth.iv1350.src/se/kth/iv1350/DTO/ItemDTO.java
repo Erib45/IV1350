@@ -1,7 +1,7 @@
 package se.kth.iv1350.DTO;
 
 /**
- * ItemDTO is a DTO class made to contain information about a specific item such as its price and the description of the item.
+ * ItemDTO is a DTO class made to contain information about a specific item.
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

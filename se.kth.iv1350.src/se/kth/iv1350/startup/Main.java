@@ -6,7 +6,7 @@ import se.kth.iv1350.integration.DatabaseConnectionErrorException;
 import se.kth.iv1350.view.View;
 
 /**
- * Main starts up the program by starting controller and view
+ * Main starts up the program by starting controller and view.
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

@@ -6,8 +6,8 @@ import se.kth.iv1350.DTO.ItemDTO;
 import se.kth.iv1350.DTO.SaleDTO;
 
 /**
- * ExternalInventorySystem communicates with external server containing inventory system / database.
- * (In this case we have ourselves simulated the external server)
+ * ExternalInventorySystem communicates with external server containing inventory system / database
+ * (In this case we have ourselves simulated the external server).
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

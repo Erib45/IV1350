@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Controller is the central class that communicates with many other classes to retrieve values for the view 
- * or change states in different objects by adding items or applying a discount
+ * Controller is the central class that communicates with other classes to retrieve values for the view
+ * or change states in different objects by adding items or applying a discount.
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

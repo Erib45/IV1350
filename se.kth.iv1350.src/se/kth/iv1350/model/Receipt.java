@@ -3,7 +3,7 @@ package se.kth.iv1350.model;
 import java.util.ArrayList;
 
 /**
- * Receipt contains information about a purchase and the linked sale to that purchase.
+ * Receipt contains information about a purchase.
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

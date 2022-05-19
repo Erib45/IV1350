@@ -6,6 +6,12 @@ import java.io.FileWriter;
 import se.kth.iv1350.DTO.SaleDTO;
 import se.kth.iv1350.model.TotalRevenueObserver;
 
+/**
+ *
+ * @author Erik Eriksson
+ * @author Vanshu Dutta
+ * @author Rolf Dahlberg
+ */
 public class TotalRevenueFileOutput implements TotalRevenueObserver {
 
 	private float totalRevenue;

@@ -9,7 +9,8 @@ import se.kth.iv1350.controller.OperationFailedException;
 import se.kth.iv1350.integration.ItemIDInvalidException;
 
 /**
- * View represent the user interface which in this program is hard coded to run through a possible scenario
+ * View represent the user interface and contains hard coded calls to the controller
+ * showing an example run of the program.
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

@@ -6,7 +6,7 @@ import se.kth.iv1350.model.Receipt;
 
 /**
  * Printer would be used to print out the receipt to the physical printer
- * (In this case we have ourself simulated what the printer would have printed in console)
+ * (In this case the printer prints the receipt to the console).
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg

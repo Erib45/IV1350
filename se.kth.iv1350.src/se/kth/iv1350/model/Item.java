@@ -3,7 +3,7 @@ package se.kth.iv1350.model;
 import se.kth.iv1350.DTO.ItemDTO;
 
 /**
- * Item contains an itemDTO describing the item and a quantity describing how many of the specific item is in the object.
+ * Item contains an itemDTO describing the item and a quantity of the item.
  * This is used to store items in the sale.
  * @author Erik Eriksson
  * @author Vanshu Dutta

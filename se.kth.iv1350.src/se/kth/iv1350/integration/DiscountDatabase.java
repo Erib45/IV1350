@@ -5,8 +5,8 @@ import java.util.HashMap;
 import se.kth.iv1350.DTO.SaleDTO;
 
 /**
- * DiscountDatabase communicates with external server containing a database with discounts linked with costumer id's.
- * (In this case we have ourself simulated the external server)
+ * DiscountDatabase communicates with external server containing a database with discounts linked with costumer id's
+ * (In this case we have ourselves simulated the external server).
  * @author Erik Eriksson
  * @author Vanshu Dutta
  * @author Rolf Dahlberg
