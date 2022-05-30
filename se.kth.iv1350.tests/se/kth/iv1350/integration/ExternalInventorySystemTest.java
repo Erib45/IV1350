@@ -10,6 +10,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class ExternalInventorySystemTest {
 
@@ -49,6 +50,7 @@ class ExternalInventorySystemTest {
     void getItemInfoInvalidIDTest() throws ItemIDInvalidException, DatabaseConnectionErrorException {
     	try {
     		ItemDTO actual = invSys.getItemInfo(0);
+    		 fail("Exception was not thrown");
     	}catch(Exception e) {
     		assertTrue(e.getMessage().contains("0"), "The wrong itemID has been registered in the exception"
     				+ " or the exception was not thrown correctly");

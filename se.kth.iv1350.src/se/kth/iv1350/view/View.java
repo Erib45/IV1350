@@ -25,7 +25,7 @@ public class View {
         controller.addTotalRevenueObserver(new TotalRevenueFileOutput());
     }
 
-    public void runProgram() throws OperationFailedException{
+    public void runProgram(){
     	System.out.println("Starting new sale");
     	controller.startSale();
     	System.out.println("Adding item with itemID 1");
@@ -57,8 +57,8 @@ public class View {
         addItem(1, 2);
         System.out.println("Adding 3 of item with itemID 8");
         addItem(8, 3);
-        System.out.println("Adding item with itemID 3");
-        addItem(3);
+        System.out.println("Adding the hardcoded \"lose connection to database\" id");
+        addItem(50);
         System.out.println("Adding 4 of item with itemID 2");
         addItem(2, 4);
         System.out.println("Adding item with itemID 3");
@@ -69,18 +69,21 @@ public class View {
         controller.enterPayment(1000);
     }
     
-    private void addItem(int itemID) throws OperationFailedException {
+    private void addItem(int itemID){
         addItem(itemID, 1);
     }
 
-    private void addItem(int itemID, int quantity) throws OperationFailedException {
+    private void addItem(int itemID, int quantity){
         try {
             SaleDTO saleDTO = controller.addItem(itemID, quantity).getSale();
             System.out.println("New total: " + saleDTO.getTotal() + "\nItem: " +
                     saleDTO.getItemWithID(itemID).getItemDTO().getName() + "\n" +
                     saleDTO.getItemWithID(itemID).getItemDTO().getDescription() +"\n");
             }catch(ItemIDInvalidException e) {
-                System.out.println("\n*TO USER INTERFACE* " + e.getMessage() + "\n");
+                System.out.println("\n*TO USER INTERFACE* Item id is invalid\n");
+                logMsg(e);
+            }catch(OperationFailedException e) {
+            	System.out.println("\n*TO USER INTERFACE* Operation failed\n");
                 logMsg(e);
             }
         }
@@ -90,6 +93,6 @@ public class View {
         String time = LocalDateTime.now().format(dateTimeFormatter);
     	System.out.println("*LOG MESSAGE*\nError message: " + e.getMessage() + "\nTime of error: " + time);
     	e.printStackTrace();
-    	System.out.println("*END OF LOG MESSAGE\n");
+    	System.out.println("*END OF LOG MESSAGE*\n");
     }
 }

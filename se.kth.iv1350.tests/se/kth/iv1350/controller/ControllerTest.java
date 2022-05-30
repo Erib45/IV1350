@@ -54,6 +54,7 @@ class ControllerTest {
     void testAddItemInvalidID() throws OperationFailedException{
     	try {
         controller.addItem(5);
+        fail("Exception was not thrown");
     	}catch(ItemIDInvalidException e) {
     		assertTrue(e.getMessage().contains("5"), "The wrong itemID has been registered in the exception"
     				+ " or the exception was not thrown correctly");
@@ -65,6 +66,7 @@ class ControllerTest {
     void testAddItemNoConnectionToDatabase() throws ItemIDInvalidException {
         try {
             controller.addItem(50);
+            fail("Exception was not thrown");
         }catch(OperationFailedException e) {
             assertTrue(e.getCause().getMessage().contains("Connection to the inventory database could not be established"),
                      "The exception was not thrown correctly");
@@ -84,6 +86,7 @@ class ControllerTest {
     void testAddItemWithQuantityInvalidID() throws OperationFailedException{
     	try {
     		 controller.addItem(0, 3);
+    		 fail("Exception was not thrown");
     	}catch(ItemIDInvalidException e) {
     		assertTrue(e.getMessage().contains("0"), "The wrong itemID has been registered in the exception"
     				+ " or the exception was not thrown correctly");

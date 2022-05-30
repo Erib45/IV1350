@@ -60,7 +60,7 @@ public class Controller {
         sale.addItem(itemDTO, quantity);
         return sale;
     	}catch(DatabaseConnectionErrorException e) {
-     	   throw new OperationFailedException("Item could not be added", e);
+     	   throw new OperationFailedException("No connection to database", e);
         }
     }
     
